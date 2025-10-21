@@ -15,7 +15,7 @@ function AboutUs() {
           backgroundImage: 'url("/contact-breadcrumb.jpg")', // Corrected image path
         }}
       >
-        <div className="relative z-10 flex h-full items-center justify-between px-8 text-white md:px-16">
+        <div className="relative z-20 flex h-full items-center justify-between px-8 text-white md:px-16">
           <h2 className="text-3xl font-bold sm:text-5xl">About</h2>
 
           <ul className="flex gap-3 text-lg font-semibold">

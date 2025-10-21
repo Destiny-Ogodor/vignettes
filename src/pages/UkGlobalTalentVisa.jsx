@@ -1,4 +1,3 @@
-import ServicesHero from "../ui/ServicesHero";
 import SinglePageHeader from "../ui/SinglePageHeader";
 
 function UkGlobalTalentVisa() {
@@ -19,7 +18,7 @@ function UkGlobalTalentVisa() {
             <h5 className="text-center font-semibold uppercase tracking-wider text-siteRed sm:text-sm">
               Visa Categories
             </h5>
-            <h2 className="text-center text-3xl font-bold tracking-wide sm:text-4xl md:text-5xl">
+            <h2 className="text-center text-2xl font-bold tracking-wide sm:text-4xl md:text-5xl">
               UK Global Talent Visa
             </h2>
           </div>
@@ -34,7 +33,7 @@ function UkGlobalTalentVisa() {
 
         <section>
           <header>
-            <h3 className="text-primary text-center text-2xl font-bold tracking-wide">
+            <h3 className="text-primary text-center text-xl font-bold tracking-wide sm:text-2xl">
               These are three sectors covered under this Visa:
             </h3>
           </header>
@@ -91,6 +90,29 @@ function UkGlobalTalentVisa() {
                 cybersecurity
               </p>
             </article>
+          </div>
+
+          <div className="flex w-full flex-col items-center gap-8">
+            <p className="mt-14 max-w-4xl text-center text-sm leading-relaxed tracking-wider text-gray-600 sm:text-lg">
+              The Application process involves first obtaining an Endorsement
+              from the relevant Endorsing Body. If approved, a Visa Application
+              is submitted to the Home Office which will lead to a 3-year Visa
+              after which you may be eligible for Indefinite Leave to Remain.
+              This Visa does not require a Job Offer and offers flexibility in
+              terms of whether you wish to be employed or establish your own
+              business in the UK. Regardless of whether you are in paid
+              employment of business, you can apply for global talent visa.{" "}
+            </p>
+
+            <h5 className="text-center font-bold">
+              Please share your recently updated Resume with us for assessment.{" "}
+            </h5>
+            <a
+              href="mailto:ukgtv@insights4globaltalents.com"
+              className="text-siteRed hover:underline"
+            >
+              ukgtv@insights4globaltalents.com
+            </a>
           </div>
         </section>
       </div>

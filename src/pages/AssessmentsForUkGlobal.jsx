@@ -5,7 +5,7 @@ function AssessmentsForUkGlobal() {
     <div>
       <div>
         <SinglePageHeader
-          title="Services"
+          title="Assessments"
           backgroundImage="/contact-breadcrumb.jpg"
           breadcrumbLinks={[
             { label: "Home", to: "/" },

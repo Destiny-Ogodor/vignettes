@@ -5,11 +5,18 @@ import { FiChevronDown } from "react-icons/fi";
 function HeaderNav() {
   const location = useLocation();
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isAssessmentsOpen, setIsAssessmentsOpen] = useState(false);
 
   const isActive = (path) => location.pathname === path;
 
   const toggleServicesDropdown = () => {
     setIsServicesOpen((prev) => !prev);
+    setIsAssessmentsOpen(false);
+  };
+
+  const toggleAssessmentsDropdown = () => {
+    setIsAssessmentsOpen((prev) => !prev);
+    setIsServicesOpen(false);
   };
 
   return (
@@ -36,12 +43,14 @@ function HeaderNav() {
             </li>
           ))}
 
-          {/* SERVICES with Dropdown Toggle */}
+          {/* SERVICES DROPDOWN */}
           <li className="relative">
             <button
               onClick={toggleServicesDropdown}
               className={`group relative flex items-center gap-1 ${
-                isActive("/services") ? "text-siteRed" : "text-black"
+                location.pathname.startsWith("/services")
+                  ? "text-siteRed"
+                  : "text-black"
               } transition-all duration-300 hover:-mt-[2px] hover:text-siteRed`}
             >
               <span>Services</span>
@@ -52,25 +61,101 @@ function HeaderNav() {
               />
             </button>
 
-            {/* Dropdown Menu */}
             {isServicesOpen && (
               <ul
-                className="absolute left-0 top-[calc(100%+4px)] z-50 w-56 rounded-md border border-gray-100 bg-white shadow-md"
+                className="absolute left-0 top-[calc(100%+4px)] z-50 w-64 rounded-md border border-gray-100 bg-white shadow-md"
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
-                <li>
-                  <NavLink
-                    to="/services/uk-global-talent-visa"
-                    className={`block px-4 py-2 text-[15px] text-gray-700 transition-all hover:bg-gray-50 hover:text-siteRed ${
-                      isActive("/services/uk-global-talent-visa")
-                        ? "text-siteRed"
-                        : ""
-                    }`}
-                    onClick={() => setIsServicesOpen(false)} // Close dropdown on click
-                  >
-                    UK Global Talent Visa
-                  </NavLink>
-                </li>
+                {[
+                  {
+                    name: "UK Global Talent Visa",
+                    path: "/services/uk-global-talent-visa",
+                  },
+                  {
+                    name: "Study Abroad - International Study",
+                    path: "/services/study-abroad",
+                  },
+                  { name: "US EB1A", path: "/services/us-eb1a" },
+                  {
+                    name: "Canada Permanent Residence",
+                    path: "/services/canada-permanent-residence",
+                  },
+                  {
+                    name: "Canada PR - Start-up Visa Program",
+                    path: "/services/canada-pr-startup-visa-program",
+                  },
+                  {
+                    name: "Education & Medical Tourism",
+                    path: "/services/education-and-medical-tourism",
+                  },
+                ].map(({ name, path }) => (
+                  <li key={path}>
+                    <NavLink
+                      to={path}
+                      className={`block px-4 py-2 text-[15px] text-gray-700 transition-all hover:bg-gray-50 hover:text-siteRed ${
+                        isActive(path) ? "text-siteRed" : ""
+                      }`}
+                      onClick={() => setIsServicesOpen(false)}
+                    >
+                      {name}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+
+          {/* ASSESSMENTS DROPDOWN */}
+          <li className="relative">
+            <button
+              onClick={toggleAssessmentsDropdown}
+              className={`group relative flex items-center gap-1 ${
+                location.pathname.startsWith("/assessments") ||
+                location.pathname.startsWith("/assessments-for")
+                  ? "text-siteRed"
+                  : "text-black"
+              } transition-all duration-300 hover:-mt-[2px] hover:text-siteRed`}
+            >
+              <span>Assessments</span>
+              <FiChevronDown
+                className={`transition-transform duration-200 ${
+                  isAssessmentsOpen ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            </button>
+
+            {isAssessmentsOpen && (
+              <ul
+                className="absolute left-0 top-[calc(100%+4px)] z-50 w-72 rounded-md border border-gray-100 bg-white shadow-md"
+                onMouseLeave={() => setIsAssessmentsOpen(false)}
+              >
+                {[
+                  { name: "All Assessments", path: "/assessments" },
+                  {
+                    name: "Assessments for UK Global Talent Visa",
+                    path: "/assessments-for-uk-global-talent-visa",
+                  },
+                  {
+                    name: "Assessments for US EB1A",
+                    path: "/assessments-for-us-eb1a",
+                  },
+                  {
+                    name: "Assessments for US EB2-NIW",
+                    path: "/assessments-for-us-eb2-niw",
+                  },
+                ].map(({ name, path }) => (
+                  <li key={path}>
+                    <NavLink
+                      to={path}
+                      className={`block px-4 py-2 text-[15px] text-gray-700 transition-all hover:bg-gray-50 hover:text-siteRed ${
+                        isActive(path) ? "text-siteRed" : ""
+                      }`}
+                      onClick={() => setIsAssessmentsOpen(false)}
+                    >
+                      {name}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             )}
           </li>
